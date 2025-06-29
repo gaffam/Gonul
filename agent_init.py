@@ -2,6 +2,7 @@ import yaml
 import time
 from pathlib import Path
 from llama_cpp import Llama
+from gonul_proxy import filtered_output
 
 # === PATH CONFIGURATION ===
 ROOT_DIR = Path(__file__).resolve().parent
@@ -65,7 +66,8 @@ def load_configuration(personality_path: Path = PERSONALITY_PATH, goals_path: Pa
 def initial_prompt(llm: Llama, system_prompt: str):
     print("🗣️ Initial prompt loaded...\n")
     response = llm(system_prompt, max_tokens=300, stop=["\n"])
-    print("🤖 Gonul:", response["choices"][0]["text"].strip())
+    first_reply = response["choices"][0]["text"].strip()
+    print("🤖 Gonul:", filtered_output(first_reply))
 
 
 # === INTERACTIVE SESSION ===
@@ -106,7 +108,8 @@ def start_agent(
     def respond(user_text: str, goal_context: str) -> str:
         prompt = f"{system_prompt}{goal_context}\nUser: {user_text}\nGonul:"
         result = llm(prompt, max_tokens=256, stop=["User:", "Gonul:"])
-        return result["choices"][0]["text"].strip()
+        text = result["choices"][0]["text"].strip()
+        return filtered_output(text)
 
     return respond
 
