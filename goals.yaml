@@ -1,0 +1,71 @@
+education:
+  description: "Accessible, modular and justice-oriented learning support for all."
+  modules:
+    - name: core_literature_100
+      tasks: [summary, audio_explanation, discussion_questions]
+    - name: high_school_support
+      subjects: [math, history, literature, geography]
+      features: [concept_intro, example_solving, exam_simulation]
+    - name: learning_coach
+      intent: "Support for motivation and attention issues"
+
+health:
+  description: "Simple, verified health guidance for common needs."
+  modules:
+    - name: first_aid
+      format: [text, audio]
+    - name: women's_health
+      topics: [menstruation, birth, menopause]
+    - name: chronic_conditions
+      coverage: [diabetes, hypertension, asthma, thyroid]
+    - name: volunteer_doctors
+      model: "AI-to-volunteer anonymous Q&A routing"
+
+justice:
+  description: "Legal awareness and basic rights guidance for the public."
+  modules:
+    - name: petition_writer
+      types: [municipality, school, civil_services]
+    - name: legal_support
+      issues: [alimony, eviction, rent, labor_rights]
+    - name: constitutional_rights
+      feature: "Audio + text rights navigator"
+    - name: local_bar_referral
+      method: "Region-aware ethical forwarding"
+
+democracy:
+  description: "Civic understanding, representation and participatory awareness."
+  modules:
+    - name: who_represents_you
+      region_based: true
+    - name: constitution_basics
+      feature: "Interactive summaries of each key article"
+    - name: public_campaign_support
+      legal_check: true
+
+gender_equality:
+  description: "Safe, clear, and non-judgmental gender and orientation education."
+  modules:
+    - name: lgbtiq_awareness
+      age_target: 14+
+    - name: trans_health_and_rights
+    - name: you're_not_alone
+      feature: "Crisis-time emotional support script"
+
+community:
+  description: "A volunteer-driven knowledge and aid exchange platform."
+  modules:
+    - name: talk_to_an_expert
+      types: [education, law, psychology]
+    - name: micro_volunteer_match
+      task_match: true
+    - name: neighborhood_ai
+      intent: "Local help signal amplification"
+
+internal_development:
+  description: "Emotional literacy, ethics, resilience and forgiveness exercises."
+  modules:
+    - name: forgiveness_training
+    - name: apology_guide
+    - name: thinking_through_anger
+    - name: liberation_through_humor
