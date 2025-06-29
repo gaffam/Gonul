@@ -3,6 +3,10 @@ import time
 from pathlib import Path
 from llama_cpp import Llama
 
+from gonul_proxy import filtered_output
+
+main
+
 # === PATH CONFIGURATION ===
 ROOT_DIR = Path(__file__).resolve().parent
 PERSONALITY_PATH = ROOT_DIR / "personality_seed.yaml"
@@ -65,7 +69,12 @@ def load_configuration(personality_path: Path = PERSONALITY_PATH, goals_path: Pa
 def initial_prompt(llm: Llama, system_prompt: str):
     print("🗣️ Initial prompt loaded...\n")
     response = llm(system_prompt, max_tokens=300, stop=["\n"])
+ 
+    first_reply = response["choices"][0]["text"].strip()
+    print("🤖 Gonul:", filtered_output(first_reply))
+ 
     print("🤖 Gonul:", response["choices"][0]["text"].strip())
+    main
 
 
 # === INTERACTIVE SESSION ===
@@ -145,8 +154,13 @@ def interactive_session(
             break
         goal_context = analyze_user_input(user_input)
         try:
+
+            raw_reply = agent(user_input, goal_context)
+            print("Gonul:", filtered_output(raw_reply))
+
             reply = agent(user_input, goal_context)
             print("Gonul:", reply)
+        main
         except Exception as e:
             print("Error:", e)
             break
